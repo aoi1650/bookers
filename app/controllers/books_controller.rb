@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  # newメソッドは必要ないかも
   def new
     # @book = Book.new
   end
