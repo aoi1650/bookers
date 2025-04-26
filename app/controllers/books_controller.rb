@@ -1,8 +1,5 @@
 class BooksController < ApplicationController
   # newメソッドは必要ないかも
-  def new
-    # @book = Book.new
-  end
 
   def create
     @book = Book.new(book_params)
@@ -10,7 +7,7 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book.id)
     else
-      flash.now[:alert] = "Book could not be created."
+      @books = Book.all
       render :index
     end
   end
@@ -34,7 +31,7 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully updated."
       redirect_to book_path(book.id)
     else
-      flash.now[:alert] = "Book could not be updated."
+      @book = book
       render :edit
     end
   end
